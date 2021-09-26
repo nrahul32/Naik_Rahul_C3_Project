@@ -61,4 +61,29 @@ class RestaurantTest {
                 ()->restaurant.removeFromMenu("French fries"));
     }
     //<<<<<<<<<<<<<<<<<<<<<<<MENU>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    
+    //>>>>>>>>>>>>>>>>>>>>>>>>>>>ORDER<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+    @Test
+    public void get_total_should_return_total_value_of_the_order_when_list_of_1_item_is_passed(){
+        String[] selectedItems = {"Sweet corn soup"};
+        int orderValue = restaurant.getTotal(selectedItems);
+        assertEquals(119 , orderValue);
+    }
+
+    @Test
+    public void get_total_should_return_total_value_of_the_order_when_list_of_2_items_is_passed(){
+        String[] selectedItems = {"Sweet corn soup", "Vegetable lasagne"};
+        int orderValue = restaurant.getTotal(selectedItems);
+        assertEquals(119 + 269 , orderValue);
+    }
+
+    @Test
+    public void get_total_should_return_zero_when_empty_list_is_passed(){
+        String[] selectedItems = {};
+        int orderValue = restaurant.getTotal(selectedItems);
+        assertEquals(0 , orderValue);
+    }
+
+    //<<<<<<<<<<<<<<<<<<<<<<<ORDER>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 }
